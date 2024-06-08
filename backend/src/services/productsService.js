@@ -9,10 +9,16 @@ const getAll = async () => {
 
 const getById = async (id) => {
   const product = await productsModel.getById(id);
-  return product; // Não há necessidade de verificar se o produto existe aqui
+  return product; 
+};
+
+const create = async ({ name }) => {
+  const insertId = await productsModel.create({ name });
+  return { id: insertId, name };
 };
 
 module.exports = {
   getAll,
   getById,
+  create,
 };

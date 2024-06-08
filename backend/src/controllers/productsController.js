@@ -25,7 +25,22 @@ const getById = async (req, res) => {
   }
 };
 
+const create = async (req, res, next) => {
+  try {
+    console.log(req.body);
+    const { name } = req.body;
+    if (!name) {
+      return res.status(400).json({ message: '"name" is required' });
+    }
+    const id = await productsService.create({ name });
+    res.status(201).json(id);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   getAll,
   getById,
+  create,
 };
