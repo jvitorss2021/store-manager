@@ -1,4 +1,3 @@
-// src/models/productsModel.js
 const connection = require('./connection');
 
 const getAll = async () => {

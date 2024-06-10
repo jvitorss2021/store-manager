@@ -1,5 +1,3 @@
-// test/middlewares/validateProduct.test.js
-
 const sinon = require('sinon');
 const chai = require('chai');
 const validateProduct = require('../../../src/middlewares/validateProducts');

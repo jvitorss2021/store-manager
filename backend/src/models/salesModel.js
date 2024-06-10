@@ -1,5 +1,3 @@
-// src/models/salesModel.js
-
 const connection = require('./connection');
 
 const getAll = async () => {

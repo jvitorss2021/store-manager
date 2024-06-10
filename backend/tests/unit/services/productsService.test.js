@@ -1,4 +1,3 @@
-// test/services/productsService.test.js
 const { expect } = require('chai');
 const productsService = require('../../../src/services/productsService');
 const { productById } = require('../mocks/productsMock');

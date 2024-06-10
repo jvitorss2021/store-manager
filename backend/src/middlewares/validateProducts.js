@@ -1,5 +1,3 @@
-// src/middlewares/validateProduct.js
-
 const validateProduct = (req, res, next) => {
   const { name } = req.body;
 
