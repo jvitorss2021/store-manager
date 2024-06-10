@@ -11,5 +11,5 @@ router.post('/products', validateProduct, productsController.create);
 
 router.get('/sales', salesController.getAll);
 router.get('/sales/:id', salesController.getById);
-
-module.exports = router;
+router.post('/sales', salesController.create);
+module.exports = router;  
