@@ -16,7 +16,7 @@ describe('Sales Controller', function () {
     it('should return an array with all sales', async function () {
       const res = await chai.request(app).get('/sales');
       expect(res.body).to.be.an('array');
-      expect(res.body.length).to.be.at.least(1); // Certifica-se de que há ao menos uma venda
+      expect(res.body.length).to.be.at.least(1);
     });
 
     it('should have the expected keys for all sales', async function () {
@@ -28,7 +28,6 @@ describe('Sales Controller', function () {
 
     it('should have the expected values for all sales', async function () {
       const res = await chai.request(app).get('/sales');
-      // Verifique os valores com base nos dados conhecidos no seu banco de dados de teste
       if (res.body.length > 0) {
         expect(res.body[0]).to.have.property('saleId');
         expect(res.body[0]).to.have.property('date');
@@ -47,7 +46,7 @@ describe('Sales Controller', function () {
     it('should return an array with specific sale', async function () {
       const res = await chai.request(app).get('/sales/1');
       expect(res.body).to.be.an('array');
-      expect(res.body.length).to.be.at.least(1); // Certifica-se de que há ao menos um item na venda específica
+      expect(res.body.length).to.be.at.least(1); 
     });
 
     it('should have the expected keys for specific sale', async function () {
@@ -59,7 +58,6 @@ describe('Sales Controller', function () {
 
     it('should have the expected values for specific sale', async function () {
       const res = await chai.request(app).get('/sales/1');
-      // Verifique os valores com base nos dados conhecidos no seu banco de dados de teste
       if (res.body.length > 0) {
         expect(res.body[0]).to.have.property('date');
         expect(res.body[0]).to.have.property('productId');

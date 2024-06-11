@@ -55,4 +55,20 @@ describe('Products Service', function () {
       }
     });
   });
+  describe('deleteProduct', function () {
+    it('should delete a product successfully', async function () {
+      sinon.stub(productsModel, 'delete').resolves(1);
+      await productsService.deleteProduct(1);
+    });
+
+    it('should throw an error if product not found', async function () {
+      sinon.stub(productsModel, 'delete').resolves(0);
+      try {
+        await productsService.deleteProduct(999);
+      } catch (error) {
+        expect(error).to.have.property('message', 'Product not found');
+        expect(error).to.have.property('status', 404);
+      }
+    });
+  });
 });
