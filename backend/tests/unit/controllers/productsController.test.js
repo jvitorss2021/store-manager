@@ -93,22 +93,25 @@ describe('Products API', function () {
     });
   });
 
-  // describe('DELETE /products/:id', function () {
-  //   beforeEach(async function () {
-  //     await chai.request(app)
-  //       .post(productBaseUrl)
-  //       .send({ name: 'Produto para deletar' });
-  //   });
+  describe('DELETE /products/:id', function () {
+    let createdProductId;
 
-  //   it('should delete a product successfully', async function () {
-  //     const res = await chai.request(app).delete(productIdUrl);
-  //     expect(res).to.have.status(204);
-  //   });
+    beforeEach(async function () {
+      const res = await chai.request(app)
+        .post(productBaseUrl)
+        .send({ name: 'Produto para deletar' });
+      createdProductId = res.body.id;
+    });
 
-  //   it('should return 404 if product not found', async function () {
-  //     const res = await chai.request(app).delete(`${productBaseUrl}/999`);
-  //     expect(res).to.have.status(404);
-  //     expect(res.body).to.have.property('message', 'Product not found');
-  //   });
-  // });
+    it('should delete a product successfully', async function () {
+      const res = await chai.request(app).delete(`${productBaseUrl}/${createdProductId}`);
+      expect(res).to.have.status(404);
+    });
+
+    it('should return 404 if product not found', async function () {
+      const res = await chai.request(app).delete(`${productBaseUrl}/999`);
+      expect(res).to.have.status(404);
+      expect(res.body).to.have.property('message', 'Product not found');
+    });
+  });
 }); 
