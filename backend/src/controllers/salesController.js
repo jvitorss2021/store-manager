@@ -27,10 +27,11 @@ const getById = async (req, res) => {
 const create = async (req, res, next) => {
   try {
     const products = req.body;
+    
     const newSale = await salesService.create(products);
     res.status(201).json(newSale);
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     next(error);
   }
 };
